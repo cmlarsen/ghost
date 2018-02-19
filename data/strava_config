@@ -1,7 +1,0 @@
-
-{
-    "access_token"    :"a5e8d44279ef073906787faf10987826f6b818b3"
-    , "client_id"     :15005
-    , "client_secret" :"fbb2afdad6de0ecf67f1d912061fac64e4c9f706"
-    , "redirect_uri"  :"https://ghost-coach.herokuapp.com/api/token_exchange"
-}
