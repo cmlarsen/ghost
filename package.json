@@ -37,7 +37,8 @@
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
     "strava-v3": "^1.14.0",
-    "twilio": "^3.11.3"
+    "twilio": "^3.11.3",
+    "webpack": "^1.12.2"
   },
   "devDependencies": {
     "autoprefixer": "^6.0.3",
