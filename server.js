@@ -55,7 +55,8 @@ if (isDeveloping) {
   //   res.end();
   // });
 } else {
-  app.use(express.static(__dirname + "/dist"));
+  // app.use(express.static(__dirname + "/dist"));
+  app.use(express.static("public"));
   app.use("/api", api);
   app.use("/", index);
   // app.get("*", function response(req, res) {
