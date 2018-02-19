@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "tada-training-plan",
+  "private_key_id": "6ad9710cb8ad8435738f83de5ea94625ea4e7c3c",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC/EW99ba4YXASg\nfRIxnz79z7+5HuuSVv4mT5hkoKGoiXixFdgTtxbW7wUb88BN6Hz3kjdCIz9lPUhF\nIcvCDia0G4jvUPHUTenisjyfhwufVp3INnv+dNlsTtc319oxqN9l3Auet92cCx+1\n86hfaSgWuBuyHqnkX7XOP2J6lc2mHC04QIh8TKCcTxrTmrreXZFg4mb2Ur9NiqiG\nLSN9EZUgpqDgEGfmuVwl0a524OIigW+Cg0cekh6/yactyJ9BarTrtYiNYtkF3ts+\n9RP5q2aO131zs3wbqRehhZT4lR6BS/ZtWdA3N6j+rHXo/U1f/EDTwArS/67GkQCM\nVDsv+xFvAgMBAAECggEAHCvXGzsUMQ2ZiwuAfBDa6fOlyjGCZz8XVZEPyupvhhjQ\nKEABw2plM4c7YsiDi+52785prQE4btYPH/j11iSy/9mSzOz2Mv4n5B+xK45ESu0r\nnLetJt1AqiT3u4lCZ7xampChT/i+c9b6CSBQrNH63LAEOV98X3/dyk1Ig62EYZ9t\nipPJf/2paXMxaIiXLavqFSbXEmG/eWPM5GPQ+onMvZzog/Z6/iKkhO0QLFgHuEoW\nw8BWXmm2NCQ5MQbWnfRgKoQ7rb8y9mZsWfAPH8ySMLA6R6UYA6yGuiy1LWK+Xcyx\n3Ruxxyw/fHbf1kwZncvcibKheBIhvmb2YFsk2fACuQKBgQDtE5KukHMxwjtnTFCW\nhB2XHxAxWlo/kWgzUBwnjPljczcFJmy7G62a/org16DB3KIStplsHXEa3OqNdBP6\n8jfvGXKFB2RZAKQPIZsiFjQR4vQWg7kd8xkJaWuyTgbIw73E6GKYUrvpg1NTLdxL\nIgBAjy7uD6lfSLYOoabK7wHMpwKBgQDOUboDl504h2SjNiHHP440l/Gmp5D3k/Rn\ntBN2+Na3pt25YiQbToYj9U7fSESJFujQkmldSGcNK+yXCU3JaOtIKYdiH2AvHJ4P\nmMAh1hYWZqZ7T0gzZ4uCmUaVXqH/3sbAkhHKKBEoLXYw18mYtX3d2NvB0vBjEttT\ngCkpNJ5F+QKBgCgG6vgQKXLYQWFScDTJf5l5RCmhAKXE7hvjxa0jzyNsW3jCIQ+C\nP9Bwc5A8t8ajcrXIIKUxX1xSukNBuvHenXUADebJ9bZVNl3bpa6eoxH2CJIYkVOu\nLKb7JpTHObwB2HN7bNIc/d8SLipYDt6ckgBUbG8DM+yDgUF9J4URz3L3AoGAc+LN\n07S2V4kdCtud73eQXZQ25H/cWmOddR5djIbKvA8bHUS1uSzLBamE6r+B12qpzHVg\nf0fqsihI1LEiIw4ukbLZ21B6SxwM3//Rc2/3qg9wVXS7vjvbzbhgQAgOgFTWWFXz\nbhRBRsr6Rwb9sivHDfP/w4fDBDMURHuJIx7uA6kCgYADb61TBRHop7zygFSwhfKF\n9xM/ECZB3/4QgXS6TXWv2K7O8RQf3o3gl9MjYAYdhdqp+7kfxVey94+/LEm4R3vl\nXXE/mPn2WCuz9D5KSm7V33s92uRL5VN7VotFkD9+f5IMsXMub13hl85NjEI5sPM4\nd4Aen9GrfhfoEBsbi1IaaA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-k9zox@tada-training-plan.iam.gserviceaccount.com",
+  "client_id": "114734276622707558598",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-k9zox%40tada-training-plan.iam.gserviceaccount.com"
+}

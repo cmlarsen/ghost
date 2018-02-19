@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <title>
+    Phone Number
+  </title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script>
+    var username = "<%= username %>";
+    console.log("USERNAME:", username)
+    $(document).ready(function () {
+      $("#details-form").submit(function (event) {
+        event.preventDefault();
+        var phoneNumber = $('#phone-number-input').val().replace('\[^0-9]\g', '')
+        var spreadsheet_path = $('#plan-path-input').val()
+
+
+        $.post('/api/phoneNumber', {
+          username: username,
+          phoneNumber: phoneNumber
+
+        })
+        $.post('/api/csv', {
+          username: username,
+          spreadsheet_path: spreadsheet_path
+        }).then(function () {
+          document.location = '/done'
+        })
+
+
+      });
+    })
+  </script>
+
+</head>
+
+<body>
+
+  <form id="details-form">
+    csv path:
+    <pre> https://docs.google.com/spreadsheets/d/e/2PACX-1vRA7vVpy2eKs4RpMSFnXVkQ3CxjmOW0tDESdXsbTLuaO1o90nNI_EOmx4rvM-E92pLiSrAXV_HzeVQr/pub?output=csv</pre>
+    <input id="phone-number-input" type="text" value="9062316978" placeholder="Phone Number"><br>
+    <input id="plan-path-input" type="text" value="https://docs.google.com/spreadsheets/d/e/2PACX-1vRA7vVpy2eKs4RpMSFnXVkQ3CxjmOW0tDESdXsbTLuaO1o90nNI_EOmx4rvM-E92pLiSrAXV_HzeVQr/pub?output=csv"
+      placeholder="Spread sheet path">
+    <input type="submit" value="submit">
+  </form>
+
+
+
+</body>
+
+</html>

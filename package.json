@@ -26,10 +26,18 @@
     "jscs": "jscs ."
   },
   "dependencies": {
+    "axios": "^0.17.1",
     "babel-cli": "^6.4.0",
     "babel-core": "^6.22.1",
+    "cookie-parser": "^1.4.3",
+    "csvtojson": "^1.1.9",
+    "ejs": "^2.5.7",
+    "firebase": "^4.10.0",
+    "firebase-admin": "^5.9.0",
     "react": "^0.14.3",
-    "react-dom": "^0.14.3"
+    "react-dom": "^0.14.3",
+    "strava-v3": "^1.14.0",
+    "twilio": "^3.11.3"
   },
   "devDependencies": {
     "autoprefixer": "^6.0.3",
