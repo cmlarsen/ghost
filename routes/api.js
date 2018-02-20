@@ -6,7 +6,7 @@ const axios = require("axios");
 const strava = require("strava-v3");
 var admin = require("firebase-admin");
 
-const chatProcessor = require("../modules/chatProcessor");
+const messageServer = require("../modules/messageServer");
 const profile = require("../modules/profile");
 // import { create } from "../modules/profile";
 // import { createProfile } from "../modules/profile";
@@ -133,13 +133,23 @@ router.post("/csv", function(request, response, next) {
 
 router.post("/twilio", (request, response, done) => {
   console.log("Twilio Request", request.query, request.body, request.params);
-  response.status(200).send("My Sweet Response");
+  var phoneNumber = request.body.From;
+  var message = request.body.Body;
+  chatProcessor
+    .incoming(phoneNumber, message)
+    .then(message => {
+      response.status(200).send("My Sweet Response");
+    })
+    .catch(error => {
+      console.error(error);
+      response.status(500).send(error);
+    });
 });
 
 router.get("/sendMessage", (request, response, done) => {
   console.log("/sendMessage", request.query, request.body, request.params);
   const phoneNumber = request.query.phoneNumber;
-  chatProcessor
+  messageServer
     .send("9062316978", "Hi There")
     .then(message => {
       console.log("message", message, request.query);
