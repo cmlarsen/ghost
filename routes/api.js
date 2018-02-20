@@ -146,7 +146,10 @@ router.get("/sendMessage", (request, response, done) => {
 
       response.send(message);
     })
-    .catch(error => console.error(error));
+    .catch(error => {
+      console.error(error);
+      response.status(500).send(error);
+    });
 });
 
 // export default router;
