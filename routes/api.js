@@ -6,6 +6,7 @@ const axios = require("axios");
 const strava = require("strava-v3");
 var admin = require("firebase-admin");
 
+const chatProcessor = require("../modules/chatProcessor");
 const profile = require("../modules/profile");
 // import { create } from "../modules/profile";
 // import { createProfile } from "../modules/profile";
@@ -132,6 +133,13 @@ router.post("/csv", function(request, response, next) {
 
 router.post("/twilio", (request, response, done) => {
   console.log("Twilio Request", request.query, request.body, request.params);
+  response.status(200).send();
+});
+
+router.get("/sendMessage", (request, response, done) => {
+  console.log("Twilio Request", request.query, request.body, request.params);
+  const phoneNumber = request.query.phoneNumber;
+  chatProcessor.send(phoneNumber, "Hi There");
   response.status(200).send();
 });
 

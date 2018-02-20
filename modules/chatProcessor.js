@@ -6,10 +6,9 @@ const client = new twilio(accountSid, authToken);
 const chatProcessor = {};
 
 chatProcessor.send = (phoneNumber, messageBody) => {
-  phoneNumber = "9062316978";
   client.messages
     .create({
-      body: "Hello from Node",
+      body: messageBody,
       to: "+1" + phoneNumber, // Text this number
       from: "+12345678901" // From a valid Twilio number
     })
