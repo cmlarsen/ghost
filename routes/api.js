@@ -6,6 +6,7 @@ const axios = require("axios");
 const strava = require("strava-v3");
 var admin = require("firebase-admin");
 
+const chatProcessor = require("../modules/chatProcessor");
 const messageServer = require("../modules/messageServer");
 const profile = require("../modules/profile");
 // import { create } from "../modules/profile";
