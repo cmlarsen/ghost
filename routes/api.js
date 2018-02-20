@@ -133,11 +133,11 @@ router.post("/csv", function(request, response, next) {
 
 router.post("/twilio", (request, response, done) => {
   console.log("Twilio Request", request.query, request.body, request.params);
-  response.status(200).send();
+  response.status(200).send("My Sweet Response");
 });
 
 router.get("/sendMessage", (request, response, done) => {
-  console.log("Twilio Request", request.query, request.body, request.params);
+  console.log("/sendMessage", request.query, request.body, request.params);
   const phoneNumber = request.query.phoneNumber;
   chatProcessor.send(phoneNumber, "Hi There");
   response.status(200).send();
