@@ -135,14 +135,17 @@ router.post("/csv", function(request, response, next) {
 
 router.post("/twilio", (request, response, done) => {
   console.log("Twilio Request", request.query, request.body, request.params);
+  //TODO: defensively get properties (in case they are missing)
   var phoneNumber = request.body.From;
-  var message = request.body.Body;
+  var incomingMessage = request.body.Body;
   chatProcessor
-    .incoming(phoneNumber, message)
-    .then(message => {
-      const twiml = new MessagingResponse();
-      twiml.message(message);
-      response.status(200).send(message);
+    .incoming(phoneNumber, incomingMessage)
+    .then(messageBody => {
+      const response = new MessagingResponse();
+      const message = response.message();
+      message.body(messageBody);
+      console.log(response.toString());
+      response.status(200).send(response.toString());
     })
     .catch(error => {
       console.error(error);
