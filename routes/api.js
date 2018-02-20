@@ -139,8 +139,14 @@ router.post("/twilio", (request, response, done) => {
 router.get("/sendMessage", (request, response, done) => {
   console.log("/sendMessage", request.query, request.body, request.params);
   const phoneNumber = request.query.phoneNumber;
-  chatProcessor.send(phoneNumber, "Hi There");
-  response.status(200).send();
+  chatProcessor
+    .send("9062316978", "Hi There")
+    .then(message => {
+      console.log("message", message, request.query);
+
+      response.send(message);
+    })
+    .catch(error => console.error(error));
 });
 
 // export default router;

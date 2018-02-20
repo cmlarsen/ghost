@@ -6,13 +6,12 @@ const client = new twilio(accountSid, authToken);
 const chatProcessor = {};
 
 chatProcessor.send = (phoneNumber, messageBody) => {
-  client.messages
-    .create({
-      body: messageBody,
-      to: "+1" + phoneNumber, // Text this number
-      from: "+12345678901" // From a valid Twilio number
-    })
-    .then(message => console.log(message.sid));
+  return client.messages.create({
+    body: messageBody,
+    to: "+1" + phoneNumber, // Text this number
+    from: "+12345678901" // From a valid Twilio number
+  });
+  //.then(message => console.log(message.sid));
 };
 
 module.exports = chatProcessor;
