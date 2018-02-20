@@ -61,7 +61,7 @@ if (isDeveloping) {
   // app.use(express.static(__dirname + "/dist"));
   app.use(express.static("public"));
   app.use("/api", api);
-  app.use("/", index);
+  app.use("/", mainView);
   // app.get("*", function response(req, res) {
   //   res.sendFile(path.join(__dirname, "dist/index.html"));
   // });
