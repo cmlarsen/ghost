@@ -9,7 +9,7 @@ const webpackMiddleware = require("webpack-dev-middleware");
 const webpackHotMiddleware = require("webpack-hot-middleware");
 const config = require("./webpack.config.js");
 
-const index = require("./routes/index");
+const mainView = require("./routes/index");
 const api = require("./routes/api");
 
 const isDeveloping = process.env.NODE_ENV !== "production";
@@ -25,6 +25,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 if (isDeveloping) {
+  app.use(express.static("public"));
+  app.use("/api", api);
+  app.use("/", mainView);
+  //this whole section will need to be redone once we have a react app.
+  //for now the static routes above are there because the index.html file was
+  //clobbering them
   const compiler = webpack(config);
   const middleware = webpackMiddleware(compiler, {
     publicPath: config.output.publicPath,
@@ -42,9 +48,6 @@ if (isDeveloping) {
   app.use(middleware);
 
   app.use(webpackHotMiddleware(compiler));
-  app.use(express.static("public"));
-  app.use("/api", api);
-  app.use("/", index);
 
   // app.get("*", function response(req, res) {
   //   res.write(
