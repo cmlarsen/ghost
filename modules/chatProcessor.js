@@ -1,4 +1,4 @@
-const messageServer = request("./messageServer");
+const messageServer = require("./messageServer");
 const chatProcessor = {};
 
 const command_list = ["HELP", "PLAN"];
