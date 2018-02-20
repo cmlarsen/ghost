@@ -25,8 +25,9 @@ const commands = {
 };
 
 chatProcessor.incoming = (phoneNumber, message) => {
-  if (command_list.indexOf(message.toLowercase()) > -1) {
-    return commands[message.toLowercase()]();
+  const command = message.trim().toLowerCase();
+  if (command_list.indexOf(command) > -1) {
+    return commands[command]();
   } else {
     return commands.error();
   }
