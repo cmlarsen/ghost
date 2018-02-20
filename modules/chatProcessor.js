@@ -1,36 +1,35 @@
 const messageServer = require("./messageServer");
 const chatProcessor = {};
 
-const command_list = ["HELP", "PLAN"];
+const command_list = ["help", "plan"];
 
-chatProcessor.incoming = (phoneNumber, message) => {
-  if (command_list.indexOf(message.toUppercase()) > -1) {
-    chatProcessor[message.toLowercase()](phoneNumber);
-  } else {
-    chatProcessor.error(phoneNumber);
+const commands = {
+  help: () => {
+    return new Promise((resolve, reject) => {
+      resolve("I understand the commands: " + command_list.join(", "));
+    });
+  },
+  plan: () => {
+    return new Promise((resolve, reject) => {
+      resolve("You don't need no stinkin' plan");
+    });
+  },
+  error: () => {
+    return new Promise((resolve, reject) => {
+      resolve(
+        "Sorry, I don't understand. I am a pretty dumb robot. I understand the commands: " +
+          command_list.join(", ")
+      );
+    });
   }
 };
 
-chatProcessor.help = phoneNumber => {
-  //todo: lookup user's via phonenumber
-  messageServer.send(
-    phoneNumber,
-    "I understand the commands: " + command_list.join(", ")
-  );
-};
-
-chatProcessor.plan = phoneNumber => {
-  //todo: lookup user's via phonenumber
-  messageServer.send(phoneNumber, "Plan? We don't need no stinkin' plan.");
-};
-
-chatProcessor.error = phoneNumber => {
-  //todo: lookup user's via phonenumber
-  messageServer.send(
-    phoneNumber,
-    "I'm sorry. I don't understand. I understand the commands: " +
-      command_list.join(", ")
-  );
+chatProcessor.incoming = (phoneNumber, message) => {
+  if (command_list.indexOf(message.toLowercase()) > -1) {
+    return commands[message.toLowercase()]();
+  } else {
+    return commands.error();
+  }
 };
 
 module.exports = chatProcessor;

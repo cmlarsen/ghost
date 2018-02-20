@@ -8,6 +8,7 @@ const webpack = require("webpack");
 const webpackMiddleware = require("webpack-dev-middleware");
 const webpackHotMiddleware = require("webpack-hot-middleware");
 const config = require("./webpack.config.js");
+const session = require("express-session");
 
 const mainView = require("./routes/index");
 const api = require("./routes/api");
@@ -23,6 +24,9 @@ app.set("view engine", "ejs");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(
+  session({ secret: "hotdogs-and-banana-slugs-weiner-dogs-and-chicken-lips" })
+);
 
 if (isDeveloping) {
   app.use(express.static("public"));

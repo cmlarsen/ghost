@@ -1,17 +1,18 @@
-var express = require("express");
+const express = require("express");
 // import express from "express";
-var router = express.Router();
+const router = express.Router();
 const csv = require("csvtojson");
 const axios = require("axios");
 const strava = require("strava-v3");
-var admin = require("firebase-admin");
+const admin = require("firebase-admin");
+const MessagingResponse = require("twilio").twiml.MessagingResponse;
 
 const chatProcessor = require("../modules/chatProcessor");
 const messageServer = require("../modules/messageServer");
 const profile = require("../modules/profile");
 // import { create } from "../modules/profile";
 // import { createProfile } from "../modules/profile";
-var serviceAccount = require("../data/firebasekey.json");
+const serviceAccount = require("../data/firebasekey.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -139,7 +140,9 @@ router.post("/twilio", (request, response, done) => {
   chatProcessor
     .incoming(phoneNumber, message)
     .then(message => {
-      response.status(200).send("My Sweet Response");
+      const twiml = new MessagingResponse();
+      twiml.message(message);
+      response.status(200).send(message);
     })
     .catch(error => {
       console.error(error);
