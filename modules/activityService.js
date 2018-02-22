@@ -1,3 +1,4 @@
+const strava = require("strava-v3");
 const activityService = {};
 
 activityService.incoming = event => {
