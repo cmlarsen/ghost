@@ -48,7 +48,7 @@ profile.create = profile => {
       .child(profile.username)
       .once("value")
       .then(snapshot => {
-        if (snapshot.val()) {
+        if (snapshot.val().id) {
           return true;
         } else {
           return false;
