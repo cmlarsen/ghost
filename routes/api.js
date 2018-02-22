@@ -180,7 +180,7 @@ router.get("/strava-webhook", (request, response, done) => {
 });
 
 router.post("/strava-webhook", (request, response, done) => {
-  console.log("strava-webhook", request.body);
+  console.log("strava-webhook", request);
   activityService.incoming(request.body);
   response.status(200).send();
 });
