@@ -178,6 +178,11 @@ router.get('/strava-webhook', (request, response, done) => {
   }
 })
 
+router.post('/strava-webhook', (request, response, done) => {
+  console.log("strava-webhook", request.body)
+  response.status(200).send()
+})
+
 router.get("/sendMessage", (request, response, done) => {
   console.log("/sendMessage", request.query, request.body, request.params);
   const phoneNumber = request.query.phoneNumber;
