@@ -24,21 +24,25 @@ profile.savePhoneNumber = (username, phoneNumber) => {
   return savePhoneNumber(username, phoneNumber);
 };
 
-// profile.fetchByStravaId = strava_id => {
-//   return admin
-//   .database()
-//   .ref("/users")
-//     .child(profile.username)
-//     .orderByChild('name')
-//   .once("value")
-//   .then(snapshot => {
-//     if (snapshot.val()) {
-//       return true;
-//     } else {
-//       return false;
-//     }
-//   });
-// }
+profile.fetchByStravaId = strava_id => {
+  return admin
+    .database()
+    .ref("/users")
+    .child(profile.username)
+    .orderByChild("id")
+    .equalTo(strava_id)
+    .once("value")
+    .then(snapshot => {
+      console.log("Profile", snapshot.val());
+      return snapshot.val();
+      // if (snapshot.val()) {
+
+      //   return true;
+      // } else {
+      //   return false;
+      // }
+    });
+};
 
 profile.create = profile => {
   const checkForUser = username => {
