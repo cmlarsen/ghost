@@ -21,9 +21,10 @@ activityService.getActivity = event => {
       function(err, payload, limits) {
         if (!err) {
           console.log("Activity:" + JSON.stringify(payload));
-          var miles = Math.round(payload.distance*0.000621371*100, 3)/100
-          var message = "Nice Job "+firstname:+". You Ran " + miles + " miles";
-          messageServer.send(phoneNumber, message)
+          var miles = Math.round(payload.distance * 0.000621371 * 100, 3) / 100;
+          var message =
+            "Nice Job " + firstname + ". You Ran " + miles + " miles";
+          messageServer.send(phoneNumber, message);
         } else {
           console.log(err);
         }
