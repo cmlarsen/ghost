@@ -32,8 +32,15 @@ profile.fetchByStravaId = strava_id => {
     .equalTo(strava_id)
     .once("value")
     .then(snapshot => {
-      console.log("Profile", snapshot.val());
-      return snapshot.val();
+      var results = snapshot.val();
+      console.log("Profile", results);
+      if (results) {
+        //super duper gross way to get the contents of the returned object.
+        for (var key in results) {
+          return results[key];
+        }
+      }
+
       // if (snapshot.val()) {
 
       //   return true;
