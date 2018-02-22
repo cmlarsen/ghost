@@ -3,16 +3,15 @@ const authToken = "4cf86fb1b7765d5b24b161f6629250a1"; // Your Auth Token from ww
 const twilio = require("twilio");
 const client = new twilio(accountSid, authToken);
 
-const chatProcessor = {};
+const messageServer = {};
 
-chatProcessor.send = messageBody => {
-  var phoneNumber = "9062316978";
+messageServer.send = (phoneNumber, messageBody) => {
   return client.messages.create({
     body: messageBody,
     to: "+1" + phoneNumber, // Text this number
-    from: "+12692206460 " // From a valid Twilio number
+    from: "+12692206460" // From a valid Twilio number
   });
   //.then(message => console.log(message.sid));
 };
 
-module.exports = chatProcessor;
+module.exports = messageServer;
