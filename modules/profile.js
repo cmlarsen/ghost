@@ -61,7 +61,7 @@ profile.create = profile => {
       .database()
       .ref("/users")
       .child(profile.username)
-      .set(profile);
+      .update(profile);
   };
 
   return new Promise((resolve, reject) => {
