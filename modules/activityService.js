@@ -1,6 +1,6 @@
 const strava = require("strava-v3");
 
-const profile = request("./profile.js");
+const profile = require("./profile.js");
 const activityService = {};
 
 activityService.incoming = event => {
