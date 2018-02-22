@@ -28,7 +28,6 @@ profile.fetchByStravaId = strava_id => {
   return admin
     .database()
     .ref("/users")
-    .child(profile.username)
     .orderByChild("id")
     .equalTo(strava_id)
     .once("value")
