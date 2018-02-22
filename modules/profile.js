@@ -5,8 +5,9 @@ const profile = {};
 profile.saveAccessToken = (username, token) => {
   return admin
     .database()
-    .ref("/access_token")
+    .ref("/users")
     .child(username)
+    .child("access_token")
     .set(token);
 };
 
@@ -22,6 +23,22 @@ profile.savePhoneNumber = (username, phoneNumber) => {
 
   return savePhoneNumber(username, phoneNumber);
 };
+
+// profile.fetchByStravaId = strava_id => {
+//   return admin
+//   .database()
+//   .ref("/users")
+//     .child(profile.username)
+//     .orderByChild('name')
+//   .once("value")
+//   .then(snapshot => {
+//     if (snapshot.val()) {
+//       return true;
+//     } else {
+//       return false;
+//     }
+//   });
+// }
 
 profile.create = profile => {
   const checkForUser = username => {
