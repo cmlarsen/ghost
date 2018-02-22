@@ -13,7 +13,7 @@ activityService.incoming = event => {
 activityService.getActivity = event => {
   const { owner_id, object_id } = event;
   profile.fetchByStravaId(owner_id).then(profile => {
-    const { access_token, phoneNumber, firstname: } = profile;
+    const { access_token, phoneNumber, firstname } = profile;
     //need to get the users access token and pass it along here.
     console.log(owner_id, object_id, access_token);
     strava.activities.get(
