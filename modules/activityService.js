@@ -10,7 +10,7 @@ activityService.incoming = event => {
 activityService.getActivity = id => {
   strava.activities.get({ id }, function(err, payload, limits) {
     if (!err) {
-      console.log("Activity:" + payload);
+      console.log("Activity:" + JSON.stringify(payload));
     } else {
       console.log(err);
     }
