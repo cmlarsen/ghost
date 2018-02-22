@@ -20,9 +20,11 @@ admin.initializeApp({
 });
 
 /* GET api listing. */
-router.get("/", function(request, response, next) {
+router.get("/", function (request, response, next) {
   profile
-    .create({ username: "tugboat" })
+    .create({
+      username: "tugboat"
+    })
     .then(() => {
       console.log("Sweet, created profile");
     })
@@ -61,12 +63,14 @@ router.get("/token_exchange", (request, response, next) => {
     profile.saveAccessToken(payload.athlete.username, access_token);
     profile.create(payload.athlete);
     // response.send(payload.athlete);
-    response.render("phone-collect", { username: payload.athlete.username });
+    response.render("phone-collect", {
+      username: payload.athlete.username
+    });
   });
 });
 
-router.get("/activities", function(request, response, next) {
-  strava.athlete.listActivities({}, function(err, payload, limits) {
+router.get("/activities", function (request, response, next) {
+  strava.athlete.listActivities({}, function (err, payload, limits) {
     if (!err) {
       console.log(payload);
       response.send(payload);
@@ -76,7 +80,7 @@ router.get("/activities", function(request, response, next) {
   });
 });
 
-router.post("/csv", function(request, response, next) {
+router.post("/csv", function (request, response, next) {
   //Publish to Web address of Google Sheet
   // const spreadsheet_path =
   // "https://docs.google.com/spreadsheets/d/e/2PACX-1vRA7vVpy2eKs4RpMSFnXVkQ3CxjmOW0tDESdXsbTLuaO1o90nNI_EOmx4rvM-E92pLiSrAXV_HzeVQr/pub?output=csv";
@@ -95,7 +99,9 @@ router.post("/csv", function(request, response, next) {
   const parseCsv = csvString => {
     const json = {};
     return new Promise((resolve, reject) => {
-      csv({ noheader: false })
+      csv({
+          noheader: false
+        })
         .fromString(csvString)
         .on("json", (jsonObj, row) => {
           json["day_" + row] = jsonObj;
@@ -141,19 +147,36 @@ router.post("/twilio", (request, response, done) => {
   var incomingMessage = request.body.Body;
   chatProcessor
     .incoming(phoneNumber, incomingMessage)
-    .then(messageBody => {
+    .then(responseMessage => {
       //https://www.twilio.com/docs/api/twiml/sms/your_response
-      const responseMsg = new MessagingResponse();
-      const message = responseMsg.message();
-      message.body(messageBody);
-      console.log(responseMsg.toString());
-      response.status(200).send(responseMsg.toString());
+      const twilioResponse = new MessagingResponse();
+      const message = twilioResponse.message();
+      message.body(responseMessage.body);
+
+      if (responseMessage.media) {
+        message.media(responseMessage.media);
+      }
+      console.log(twilioResponse.toString());
+      response.status(200).send(twilioResponse.toString());
     })
     .catch(error => {
       console.error(error);
       response.status(500).send(error);
     });
 });
+
+//get for setup
+router.get('/strava-webhook', (request, response, done) => {
+  console.log("strava-webhook", request.query)
+  if (request.query['hub.mode']) {
+    response.status(200).send({
+      'hub.challenge': request.query['hub.challenge']
+    })
+    return;
+  } else {
+    response.status(500).send()
+  }
+})
 
 router.get("/sendMessage", (request, response, done) => {
   console.log("/sendMessage", request.query, request.body, request.params);
